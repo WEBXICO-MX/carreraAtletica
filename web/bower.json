@@ -1,0 +1,23 @@
+{
+  "name": "carreraAtletica",
+  "authors": [
+    "WEBXICO-MX <weiss.uttab@gmail.com>"
+  ],
+  "description": "Página web para el registro de la carrera atlética XXV aniversario CGUTYP",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery-ui": "^1.11.4",
+    "bootstrap": "^3.3.6",
+    "datatables.net": "^1.10.12",
+    "datatables.net-dt": "^1.10.12"
+  }
+}
