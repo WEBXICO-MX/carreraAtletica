@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2008                    */
-/* Created on:     07/06/2016 14:57:54                          */
+/* Created on:     13/06/2016 13:49:04                          */
 /*==============================================================*/
 
 
@@ -25,6 +25,8 @@ go
 /*==============================================================*/
 create table PARTICIPANTES (
    ID                   smallint             not null,
+   CVE_PERSONA          int                  null,
+   CVE_TIPO_PERSONA     tinyint              null,
    NOMBRE               varchar(50)          null,
    AP_PATERNO           varchar(50)          null,
    AP_MATERNO           varchar(50)          null,

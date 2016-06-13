@@ -15,6 +15,7 @@ public class Participante {
 
     private int id;
     private int cvePersona;
+    private int cveTipoPersona;
     private String nombre;
     private String apPaterno;
     private String apMaterno;
@@ -40,6 +41,7 @@ public class Participante {
     private void limpiar() {
         this.id = 0;
         this.cvePersona = 0;
+        this.cveTipoPersona = 0;
         this.nombre = "";
         this.apPaterno = "";
         this.apMaterno = "";
@@ -68,6 +70,14 @@ public class Participante {
 
     public void setCvePersona(int cvePersona) {
         this.cvePersona = cvePersona;
+    }
+
+    public int getCveTipoPersona() {
+        return cveTipoPersona;
+    }
+
+    public void setCveTipoPersona(int cveTipoPersona) {
+        this.cveTipoPersona = cveTipoPersona;
     }
 
     public String getNombre() {
@@ -157,9 +167,10 @@ public class Participante {
         if (!this._existe) {
             this.id = (UtilDB.getSiguienteNumero("participantes", "id"));
             this.numeroCompetidor = Utilerias.rellenarCeros(String.valueOf(this.id), 3);
-            sql = new StringBuilder("INSERT INTO participantes (id,cve_persona,nombre,ap_paterno,ap_materno,fecha_nacimiento,sexo,categoria,numero_competidor,email,fecha_registro,activo) VALUES(");
+            sql = new StringBuilder("INSERT INTO participantes (id,cve_persona,cve_tipo_persona,nombre,ap_paterno,ap_materno,fecha_nacimiento,sexo,categoria,numero_competidor,email,fecha_registro,activo) VALUES(");
             sql.append(this.id).append(",");
             sql.append(this.cvePersona).append(",");
+            sql.append(this.cveTipoPersona).append(",");
             sql.append(Utilerias.CadenaEncomillada(this.nombre)).append(",");
             sql.append(Utilerias.CadenaEncomillada(this.apPaterno)).append(",");
             sql.append(Utilerias.CadenaEncomillada(this.apMaterno)).append(",");
@@ -206,6 +217,7 @@ public class Participante {
     private void cargar(Resultados rst) {
         this.id = rst.getInt("id");
         this.cvePersona = rst.getInt("cve_persona");
+        this.cveTipoPersona = rst.getInt("cve_tipo_persona");
         this.nombre = rst.getString("nombre");
         this.apPaterno = rst.getString("ap_paterno");
         this.apMaterno = rst.getString("ap_materno");

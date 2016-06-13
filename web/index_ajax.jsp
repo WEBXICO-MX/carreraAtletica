@@ -14,7 +14,7 @@
 <%@page import="carrera.atletica.comun.UtilDB"%>
 <%@page import="carrera.atletica.comun.Utilerias"%>
 <%@page import="carrera.atletica.comun.Resultados"%>
-<%@page contentType="application/json" pageEncoding="UTF-8"%>
+<%@page contentType="application/json" pageEncoding="UTF-8" session="false"%>
 <%
 
     String xAccion = request.getParameter("xAccion") != null ? request.getParameter("xAccion") : "";
@@ -79,6 +79,7 @@
                 p.setFechaNacimiento(xFechaNacimiento);
                 p.setSexo((String) jsonObj.get("rdSexo"));
                 p.setCategoria(Integer.parseInt((String) jsonObj.get("cmbCategoria")));
+                p.setCveTipoPersona(Integer.parseInt((String) jsonObj.get("cmbTipoPersona")));
                 //p.setNumeroCompetidor();
                 p.setEmail((String) jsonObj.get("txtEmail"));
                 p.setActivo(true);

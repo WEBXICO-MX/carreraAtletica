@@ -4,7 +4,7 @@
     Author     : Roberto Eder Weiss Juárez
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" session="false"%>
 <%
     int xCvePersona = 0;
     try {
@@ -99,8 +99,13 @@
                             <input type="text" class="form-control" id="txtMaterno" name="txtMaterno" placeholder="Ingrese su apellido materno" maxlength="50" tabindex="3">
                         </div>
                         <div class="col-md-6 form-group">
-                            <label for="txtEmail">Email:</label>
-                            <input type="text" class="form-control" id="txtEmail" name="txtEmail" placeholder="Ingrese su email" maxlength="50" tabindex="9">
+                            <label for="cmbTipoPersona">Tipo persona:</label>
+                            <select name="cmbTipoPersona" id="cmbTipoPersona" class="form-control" tabindex="8">
+                                <option value="0">Seleccione una opción</option>
+                                <option value="2">Alumno</option>
+                                <option value="4">Docente</option>
+                                <option value="8">Administrativo</option>
+                            </select>
                         </div>
                         <div class=" col-md-6 form-group">
                             <label class="radio-inline">
@@ -110,9 +115,10 @@
                                 <input type="radio" name="rdSexo" value="F" tabindex="5">Femenino
                             </label>
                         </div>
-                        <div class=" col-md-6 form-group">
-
-                        </div>                        
+                        <div class="col-md-6 form-group">
+                            <label for="txtEmail">Email:</label>
+                            <input type="text" class="form-control" id="txtEmail" name="txtEmail" placeholder="Ingrese su email" maxlength="50" tabindex="9">
+                        </div>
                         <div class="col-md-12  form-group">
                             <button type="button" class="btn btn-primary" id="btnLimpiar" name="btnLimpiar" tabindex="10">Limpiar</button>
                             <button type="submit" class="btn btn-success" id="btnGrabar" name="btnGrabar" tabindex="11">Enviar</button>

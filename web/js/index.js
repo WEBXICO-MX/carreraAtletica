@@ -152,6 +152,10 @@ function validar()
         valido = false;
         msg += "<li>Seleccione una categoría</li>";
     }
+    if($("#cmbTipoPersona").val() === "0")
+    { valido = false;
+      msg += "<li>Seleccione un tipo de persona</li>";
+    }
     if( !isValidEmailAddress($("#txtEmail").val()) )
     { valido = false;
         msg += "<li>Ingrese un email valido</li>"; 
@@ -182,6 +186,7 @@ function limpiar()
     $("#txtFechaNacimiento").val("");
     $("input[name=rdSexo]").prop('checked', false);
     $("#cmbCategoria").val("0");
+    $("#cmbTipoPersona").val("0");
     $("#txEmail").val("");
 
 }
