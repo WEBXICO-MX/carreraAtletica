@@ -40,6 +40,11 @@
     <body>
         <div class="container">
             <div class="row" >
+                <div class="col-sm-8 col-sm-offset-2" style="margin-top:270px;">
+                    <h1 class="text-center">Registro concluido, gracias por participar.</h1>
+                </div>
+            </div>
+            <div class="row" style="display:none;">
                 <div class="col-sm-6 col-sm-offset-3 text-right" style="margin-top:270px;">
                     <a href="javascript:void(0);" onclick="viewInicio();"><img src="img/btn_inicio.png" alt="Inicio"/></a>
                     <a href="javascript:void(0);" onclick="viewRegistro();"><img src="img/btn_registro.png" alt="Registro"/></a>
@@ -121,7 +126,7 @@
                         </div>
                         <div class="col-md-12  form-group">
                             <button type="button" class="btn btn-primary" id="btnLimpiar" name="btnLimpiar" tabindex="10">Limpiar</button>
-                            <button type="submit" class="btn btn-success" id="btnGrabar" name="btnGrabar" tabindex="11">Enviar</button>
+                            <!--<button type="submit" class="btn btn-success" id="btnGrabar" name="btnGrabar" tabindex="11">Enviar</button>-->
                         </div>                        
                     </form><br/>
                 </div>
