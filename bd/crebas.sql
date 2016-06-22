@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2008                    */
-/* Created on:     13/06/2016 13:49:04                          */
+/* Created on:     22/06/2016 14:51:06                          */
 /*==============================================================*/
 
 
@@ -36,6 +36,7 @@ create table PARTICIPANTES (
    NUMERO_COMPETIDOR    varchar(4)           null,
    EMAIL                varchar(50)          null,
    FECHA_REGISTRO       datetime             null,
+   ASISTIO              bit                  null,
    ACTIVO               bit                  null,
    constraint PK_PARTICIPANTES primary key (ID)
 )

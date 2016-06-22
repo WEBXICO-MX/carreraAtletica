@@ -78,7 +78,7 @@
             ));
 
             StringBuilder sql = new StringBuilder("SELECT id, (nombre + ' '+ ap_paterno+' '+ap_materno) AS nombre_completo, fecha_nacimiento, sexo,");
-            sql.append("\"categoria\" = CASE WHEN categoria =  1 THEN '3KM CARRERA' WHEN categoria = 2 THEN '3KM CAMINATA' ELSE 'No definido' END, numero_competidor, email,fecha_registro,activo ");
+            sql.append("\"categoria\" = CASE WHEN categoria =  1 THEN '3KM CARRERA' WHEN categoria = 2 THEN '3KM CAMINATA' ELSE 'No definido' END, numero_competidor, email,fecha_registro,asistio,activo ");
             sql.append("FROM participantes ORDER BY fecha_registro DESC");
 
             Resultados rst = UtilDB.ejecutaConsulta(sql.toString());
@@ -112,7 +112,7 @@
 
         HSSFRow myRow = null;
         int count = 0;
-        final String[] errorSource = {"Id", "Nombre completo", "Fecha de nacimiento", "Sexo", "Categoría", "Número de competidor", "Email", "Fecha de registro"};
+        final String[] errorSource = {"Id", "Nombre completo", "Fecha de nacimiento", "Sexo", "Categoría", "Número de competidor", "Email", "Asistió"};
         try {
             Row header = sheet.createRow(num_row);
             num_row++;
@@ -131,7 +131,8 @@
                 createCell(sheet.getWorkbook(), myRow, rst.getString("categoria"), f2, (short) 4, CellStyle.ALIGN_LEFT, CellStyle.VERTICAL_CENTER);
                 createCell(sheet.getWorkbook(), myRow, rst.getString("numero_competidor"), f2, (short) 5, CellStyle.ALIGN_LEFT, CellStyle.VERTICAL_CENTER);
                 createCell(sheet.getWorkbook(), myRow, rst.getString("email"), f2, (short) 6, CellStyle.ALIGN_LEFT, CellStyle.VERTICAL_CENTER);
-                createCell(sheet.getWorkbook(), myRow, Utilerias.getCadenaFecha(rst.getCalendar("fecha_registro")), f2, (short) 7, CellStyle.ALIGN_LEFT, CellStyle.VERTICAL_CENTER);
+                //createCell(sheet.getWorkbook(), myRow, Utilerias.getCadenaFecha(rst.getCalendar("fecha_registro")), f2, (short) 7, CellStyle.ALIGN_LEFT, CellStyle.VERTICAL_CENTER);
+                createCell(sheet.getWorkbook(), myRow, (rst.getBoolean("asistio") ? "Si":"No"), f2, (short) 7, CellStyle.ALIGN_LEFT, CellStyle.VERTICAL_CENTER);
             }
 
             HSSFRow row = sheet.getWorkbook().getSheetAt(0).getRow(4);

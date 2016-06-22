@@ -25,6 +25,7 @@ public class Participante {
     private String numeroCompetidor;
     private String email;
     private Calendar fechaRegistro;
+    private boolean asistio;
     private boolean activo;
     private boolean _existe;
 
@@ -51,6 +52,7 @@ public class Participante {
         this.numeroCompetidor = "";
         this.email = "";
         this.fechaRegistro = null;
+        this.asistio = false;
         this.activo = false;
         this._existe = false;
 
@@ -152,6 +154,14 @@ public class Participante {
         this.fechaRegistro = fechaRegistro;
     }
 
+    public boolean isAsistio() {
+        return asistio;
+    }
+
+    public void setAsistio(boolean asistio) {
+        this.asistio = asistio;
+    }
+
     public boolean isActivo() {
         return activo;
     }
@@ -167,7 +177,7 @@ public class Participante {
         if (!this._existe) {
             this.id = (UtilDB.getSiguienteNumero("participantes", "id"));
             this.numeroCompetidor = Utilerias.rellenarCeros(String.valueOf(this.id), 3);
-            sql = new StringBuilder("INSERT INTO participantes (id,cve_persona,cve_tipo_persona,nombre,ap_paterno,ap_materno,fecha_nacimiento,sexo,categoria,numero_competidor,email,fecha_registro,activo) VALUES(");
+            sql = new StringBuilder("INSERT INTO participantes (id,cve_persona,cve_tipo_persona,nombre,ap_paterno,ap_materno,fecha_nacimiento,sexo,categoria,numero_competidor,email,fecha_registro,asistio,activo) VALUES(");
             sql.append(this.id).append(",");
             sql.append(this.cvePersona).append(",");
             sql.append(this.cveTipoPersona).append(",");
@@ -180,6 +190,7 @@ public class Participante {
             sql.append(Utilerias.CadenaEncomillada(this.numeroCompetidor)).append(",");
             sql.append(Utilerias.CadenaEncomillada(this.email)).append(",");
             sql.append("GETDATE()").append(",");
+            sql.append(this.asistio ? 1 : 0).append(",");
             sql.append(this.activo ? 1 : 0);
             sql.append(")");
 
@@ -197,6 +208,7 @@ public class Participante {
             sql.append("categoria = ").append(this.categoria).append(",");
             sql.append("numero_competidor = ").append(Utilerias.CadenaEncomillada(this.numeroCompetidor)).append(",");
             sql.append("email = ").append(Utilerias.CadenaEncomillada(this.email)).append(",");
+            sql.append("asistio = ").append(this.asistio ? 1 : 0).append(",");
             sql.append("activo = ").append(this.activo ? 1 : 0);
             sql.append(" WHERE id = ").append(this.id);
             err = UtilDB.ejecutaSQL(sql.toString());
@@ -227,6 +239,7 @@ public class Participante {
         this.numeroCompetidor = rst.getString("numero_competidor");
         this.email = rst.getString("email");
         this.fechaRegistro = rst.getCalendar("fecha_registro");
+        this.asistio = rst.getBoolean("asistio");
         this.activo = rst.getBoolean("activo");
         this._existe = true;
     }
