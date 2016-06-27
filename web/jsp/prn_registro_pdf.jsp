@@ -3,13 +3,13 @@
     Created on : 07-jun-2016, 12:43:13
     Author     : Roberto Eder Weiss Juárez
 --%>
+<%@page import="com.itextpdf.text.pdf.AcroFields"%>
+<%@page import="com.itextpdf.text.pdf.PdfStamper"%>
+<%@page import="com.itextpdf.text.pdf.PdfReader"%>
 <%@page import="carrera.atletica.comun.UtilDB"%>
 <%@page import="carrera.atletica.comun.Utilerias"%>
 <%@page import="carrera.atletica.comun.Resultados"%>
 <%@page import="java.io.ByteArrayOutputStream"%>
-<%@page import="com.lowagie.text.pdf.AcroFields"%>
-<%@page import="com.lowagie.text.pdf.PdfStamper"%>
-<%@page import="com.lowagie.text.pdf.PdfReader"%>
 <%@page contentType="application/pdf" pageEncoding="UTF-8"%>
 <%
     int id = request.getParameter("id") != null ? Integer.parseInt(request.getParameter("id")) : 0;
