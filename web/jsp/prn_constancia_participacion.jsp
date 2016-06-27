@@ -39,7 +39,7 @@
 
     if (rst.next()) {
         form.setField("txtNombreCompleto", rst.getString("nombre_completo"));
-        BarcodeQRCode qrcode = new BarcodeQRCode("http://www.uttab.edu.mx/carreraAtletica/jsp/prn_constancia_participacion.jsp?id=" + id, 100, 100, null);
+        BarcodeQRCode qrcode = new BarcodeQRCode("http://www.uttab.edu.mx/carreraAtletica/jsp/prn_constancia_participacion.jsp?id="+id, 100, 100, null);
         Image qrcodeImage = qrcode.getImage();
         qrcodeImage.setAbsolutePosition(100, 100);
         qrcodeImage.scalePercent(100);
