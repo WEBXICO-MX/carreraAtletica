@@ -34,12 +34,12 @@
     AcroFields form = stamp.getAcroFields();
 
     BaseFont bf = BaseFont.createFont(
-            BaseFont.HELVETICA, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+    BaseFont.HELVETICA, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
     PdfContentByte over = stamp.getOverContent(1);
 
     if (rst.next()) {
         form.setField("txtNombreCompleto", rst.getString("nombre_completo"));
-        BarcodeQRCode qrcode = new BarcodeQRCode("http://www.uttab.edu.mx/carreraAtletica/jsp/prn_constancia_participacion?id=" + id, 100, 100, null);
+        BarcodeQRCode qrcode = new BarcodeQRCode("http://www.uttab.edu.mx/carreraAtletica/jsp/prn_constancia_participacion.jsp?id=" + id, 100, 100, null);
         Image qrcodeImage = qrcode.getImage();
         qrcodeImage.setAbsolutePosition(100, 100);
         qrcodeImage.scalePercent(100);
