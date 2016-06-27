@@ -35,33 +35,24 @@
 
     BaseFont bf = BaseFont.createFont(
             BaseFont.HELVETICA, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+    PdfContentByte over = stamp.getOverContent(1);
 
     if (rst.next()) {
         form.setField("txtNombreCompleto", rst.getString("nombre_completo"));
-    }
-    rst.close();
-
-    for (int i = 1; i <= reader.getNumberOfPages(); i++) {
-
-        PdfContentByte over = stamp.getOverContent(i);
-
-        /*over.beginText();
-         over.setFontAndSize(bf, 10);
-         over.setTextMatrix(107, 740);
-         over.showText("I can write at page " + i);
-         over.endText();*/
-
-        /*over.setRGBColorStroke(0xFF, 0x00, 0x00);
-         over.setLineWidth(5f);
-         over.ellipse(250, 450, 350, 550);
-         over.stroke();*/
-        BarcodeQRCode qrcode = new BarcodeQRCode("http://www.uttab.edu.mx/carreraAtletica/jsp/prn_constancia_participacion?id="+id, 100, 100, null);
+        BarcodeQRCode qrcode = new BarcodeQRCode("http://www.uttab.edu.mx/carreraAtletica/jsp/prn_constancia_participacion?id=" + id, 100, 100, null);
         Image qrcodeImage = qrcode.getImage();
         qrcodeImage.setAbsolutePosition(100, 100);
         qrcodeImage.scalePercent(100);
         over.addImage(qrcodeImage);
+    } else {
+        over.beginText();
+        over.setFontAndSize(bf, 24);
+        over.setTextMatrix(100, 500);
+        over.showText("No existe información de este participante");
+        over.endText();
 
     }
+    rst.close();
 
     stamp.setFormFlattening(true);
     stamp.close();
