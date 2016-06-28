@@ -27,7 +27,7 @@
     Resultados rst = UtilDB.ejecutaConsulta(sql.toString());
 
     String archivoPlantilla = "";
-    archivoPlantilla = "/plantillas/plantilla2.pdf";
+    archivoPlantilla = "/plantillas/constancia.pdf";
     PdfReader reader = new PdfReader(application.getRealPath(archivoPlantilla));
     ByteArrayOutputStream buffer = new ByteArrayOutputStream();
     PdfStamper stamp = new PdfStamper(reader, buffer);
@@ -38,10 +38,10 @@
     PdfContentByte over = stamp.getOverContent(1);
 
     if (rst.next()) {
-        form.setField("txtNombreCompleto", rst.getString("nombre_completo"));
+        form.setField("xNombreCompleto", rst.getString("nombre_completo"));
         BarcodeQRCode qrcode = new BarcodeQRCode("http://www.uttab.edu.mx/carreraAtletica/jsp/prn_constancia_participacion.jsp?id="+id, 100, 100, null);
         Image qrcodeImage = qrcode.getImage();
-        qrcodeImage.setAbsolutePosition(100, 100);
+        qrcodeImage.setAbsolutePosition(25, 25);
         qrcodeImage.scalePercent(100);
         over.addImage(qrcodeImage);
     } else {
