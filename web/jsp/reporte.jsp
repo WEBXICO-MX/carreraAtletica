@@ -55,7 +55,8 @@
                                 <th>Email</th>
                                 <!--<th>Fecha de registro</th>-->
                                 <th>Asistió</th>
-                                <th>PDF</th>
+                                <th>Hoja de confirmación</th>
+                                <th>Constancia</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -74,7 +75,14 @@
                                         <input type="checkbox" name="cbxAsistio<%= rst.getInt("id")%>" id="cbxAsistio<%= rst.getInt("id")%>" <%= rst.getBoolean("asistio") ? "checked" : ""%> onclick="setAsistencia(this);"/>
                                     </form>
                                 </td>
-                                <td><a href="prn_registro_pdf.jsp?id=<%= rst.getInt("id")%>" target="_blank">Imprimir</a></td>
+                                <td><a href="prn_registro_pdf.jsp?id=<%= rst.getInt("id")%>" target="_blank">Descargar</a></td>
+                                <td>
+                                    <% if(rst.getBoolean("asistio")){ %>
+                                    <a href="prn_constancia_participacion.jsp?id=<%= rst.getInt("id")%>" target="_blank">Descargar</a>
+                                    <%}else{%>
+                                    No disponible
+                                    <%}%>
+                                </td>
                             </tr> 
                             <%}
                                 rst.close();
