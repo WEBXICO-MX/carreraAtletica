@@ -25,14 +25,14 @@
         if (request.getParameter("xAccion").equals("enviarEmailConstanciaParticipacion")) {
 
             //sql = new StringBuilder("﻿SELECT id,UPPER(nombre+' '+ap_paterno+' '+ap_materno) AS nombre_completo, email FROM participantes WHERE asistio = 1 ORDER BY id");
-            sql = new StringBuilder("SELECT 'Roberto Eder Weiss Juárez' AS nombre_completo,'weiss.uttab@gmail.com' AS email");
+            sql = new StringBuilder("SELECT '38 AS id,Roberto Eder Weiss Juárez' AS nombre_completo,'weiss.uttab@gmail.com' AS email");
             rst = UtilDB.ejecutaConsulta(sql.toString());
 
             if (rst.recordCount() > 0) {
                 while (rst.next()) {
                     msg = new StringBuilder("<strong>").append("Estimad@: ").append(rst.getString("nombre_completo")).append("</strong><br/>");
                     msg.append("<p>Muchas gracias por participar en la \"Carrera atlética XXV aniversario CGUTyP\", te hacemos el envio del link desde donde podras descargar tu constancia de participación:</p>");
-                    msg.append("<p><a href=\"http://www.uttab.edu.mx/Home.action\" target=\"_blank\">Descarga tu constancia aquí</a></p>");
+                    msg.append("<p><a href=\"http://www.uttab.edu.mx/carreraAtletica/jsp/prn_constancia_participacion.jsp?id=").append(rst.getInt("id")).append("\" target=\"_blank\">Descarga tu constancia aquí</a></p>");
                     result = ms.send(smtp_host, smtp_user, smtp_password, rst.getString("email"), asunto, true, msg.toString(), true);
                     if (result) {
                         countEmail++;
