@@ -45,7 +45,7 @@
                 }
                 out.println("Se ha(n) enviado " + countEmail + " Email(s)");
             } else {
-                out.println("No hay participantes que cumplan con los requisitios para enviar constancia de participación");
+                out.println("No hay participantes que hayan asistido a la carrera para enviar constancia de participación");
             }
 
             rst.close();
