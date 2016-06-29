@@ -9,7 +9,7 @@
 <%@page import="java.nio.file.Files"%>
 <%@page import="carrera.atletica.comun.Resultados"%>
 <%@page import="carrera.atletica.comun.UtilDB"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" session="false"%>
 <%
 
     ServletContext servletContext = request.getSession().getServletContext();
@@ -37,5 +37,5 @@
     } // the file will be automatically closed
 
     rst.close();
-    
+
 %>

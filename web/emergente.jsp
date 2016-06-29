@@ -4,7 +4,7 @@
     Author     : Roberto Eder Weiss Juárez
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" session="false"%>
 <%
 int xCvePersona = request.getParameter("xCve") != null? Integer.parseInt(request.getParameter("xCve")):0;
 %>

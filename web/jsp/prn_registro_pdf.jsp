@@ -10,7 +10,7 @@
 <%@page import="carrera.atletica.comun.Utilerias"%>
 <%@page import="carrera.atletica.comun.Resultados"%>
 <%@page import="java.io.ByteArrayOutputStream"%>
-<%@page contentType="application/pdf" pageEncoding="UTF-8"%>
+<%@page contentType="application/pdf" pageEncoding="UTF-8" session="false"%>
 <%
     int id = request.getParameter("id") != null ? Integer.parseInt(request.getParameter("id")) : 0;
 

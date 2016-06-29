@@ -25,8 +25,8 @@
         if (request.getParameter("xAccion").equals("enviarEmailConstanciaParticipacion")) {
 
             //sql = new StringBuilder("﻿SELECT id,UPPER(nombre+' '+ap_paterno+' '+ap_materno) AS nombre_completo, email FROM participantes WHERE asistio = 1 ORDER BY id");
-            //sql = new StringBuilder("SELECT 39 AS id,'JORGE JOSÉ JIMÉNEZ DEL CUETO' AS nombre_completo,'sistemas@uttab.edu.mx' AS email");
-            sql = new StringBuilder("SELECT 38 AS id,'Roberto Eder Weiss Juárez' AS nombre_completo,'weiss.uttab@gmail.com' AS email");
+            sql = new StringBuilder("SELECT 39 AS id,'JORGE JOSÉ JIMÉNEZ DEL CUETO' AS nombre_completo,'sistemas@uttab.edu.mx' AS email");
+            //sql = new StringBuilder("SELECT 38 AS id,'Roberto Eder Weiss Juárez' AS nombre_completo,'weiss.uttab@gmail.com' AS email");
             rst = UtilDB.ejecutaConsulta(sql.toString());
 
             if (rst.recordCount() > 0) {

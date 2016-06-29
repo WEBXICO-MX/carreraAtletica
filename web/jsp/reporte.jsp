@@ -7,7 +7,7 @@
 <%@page import="carrera.atletica.comun.Utilerias"%>
 <%@page import="carrera.atletica.comun.UtilDB"%>
 <%@page import="carrera.atletica.comun.Resultados"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" session="false"%>
 <%
     boolean excel = false;
     StringBuilder sql = new StringBuilder("SELECT id, (nombre + ' '+ ap_paterno+' '+ap_materno) AS nombre_completo, fecha_nacimiento, sexo,");

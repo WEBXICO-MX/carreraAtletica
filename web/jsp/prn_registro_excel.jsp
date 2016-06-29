@@ -18,7 +18,7 @@
 <%@page import="org.apache.poi.ss.usermodel.Font"%>
 <%@page import="org.apache.poi.hssf.usermodel.HSSFSheet"%>
 <%@page import="org.apache.poi.hssf.usermodel.HSSFWorkbook"%>
-<%@ page contentType="application/vnd.ms-excelt" pageEncoding="UTF-8" %>
+<%@ page contentType="application/vnd.ms-excelt" pageEncoding="UTF-8" session="false"%>
 <%
 
     ByteArrayOutputStream buffer = new ByteArrayOutputStream();
