@@ -94,7 +94,7 @@
                     <%
                         if (excel) {
                     %>
-                    <a href="javascript:void(0);" target="_blank" onclick="descargarExcel();">Descargar Excel <img src="../img/rsz_excel.png" alt="Excel" class="img-responsive" style="margin:0 auto;"/></a>
+                    <a href="javascript:void(0);" onclick="descargarExcel();">Descargar Excel <img src="../img/rsz_excel.png" alt="Excel" class="img-responsive" style="margin:0 auto;"/></a>
                         <%
                             }
                         %>
