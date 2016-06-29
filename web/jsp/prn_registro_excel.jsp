@@ -22,10 +22,11 @@
 <%
 
     ByteArrayOutputStream buffer = new ByteArrayOutputStream();
-
+    String search = request.getParameter("s") != null ? request.getParameter("s"):"";
+    
     try {
 
-        HSSFWorkbook libro = getExcel();
+        HSSFWorkbook libro = getExcel(search);
         libro.write(buffer);
         response.setContentType("application/vnd.ms-excel");
         response.setContentLength(buffer.size());
@@ -37,7 +38,7 @@
     }
 %>
 <%!
-    public HSSFWorkbook getExcel() {
+    public HSSFWorkbook getExcel(String search) {
 
         HSSFWorkbook wb = new HSSFWorkbook();
         HSSFSheet sheet = wb.createSheet("Carrera atlética XXV aniversario CGUTyP");
@@ -77,10 +78,11 @@
                     7 //last column  (0-based)
             ));
 
-            StringBuilder sql = new StringBuilder("SELECT id, (nombre + ' '+ ap_paterno+' '+ap_materno) AS nombre_completo, fecha_nacimiento, sexo,");
+            StringBuilder sql = new StringBuilder("SELECT id, UPPER(nombre + ' '+ ap_paterno+' '+ap_materno) AS nombre_completo, fecha_nacimiento, sexo,");
             sql.append("\"categoria\" = CASE WHEN categoria =  1 THEN '3KM CARRERA' WHEN categoria = 2 THEN '3KM CAMINATA' ELSE 'No definido' END, numero_competidor, email,fecha_registro,asistio,activo ");
-            sql.append("FROM participantes ORDER BY fecha_registro DESC");
-
+            sql.append("FROM participantes ");
+            sql.append("WHERE (nombre + ' '+ ap_paterno+' '+ap_materno) LIKE ").append(Utilerias.CadenaEncomilladaLike(search));
+            sql.append(" ORDER BY fecha_registro DESC");
             Resultados rst = UtilDB.ejecutaConsulta(sql.toString());
 
             setInfo(sheet, rst, font2, ++num_row);

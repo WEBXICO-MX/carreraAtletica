@@ -10,7 +10,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" session="false"%>
 <%
     boolean excel = false;
-    StringBuilder sql = new StringBuilder("SELECT id, (nombre + ' '+ ap_paterno+' '+ap_materno) AS nombre_completo, fecha_nacimiento, sexo,");
+    StringBuilder sql = new StringBuilder("SELECT id, UPPER(nombre + ' '+ ap_paterno+' '+ap_materno) AS nombre_completo, fecha_nacimiento, sexo,");
     sql.append("\"categoria\" = CASE WHEN categoria =  1 THEN '3KM CARRERA' WHEN categoria = 2 THEN '3KM CAMINATA' ELSE 'No definido' END, numero_competidor, email,fecha_registro,asistio,activo ");
     sql.append("FROM participantes ORDER BY fecha_registro DESC");
 
@@ -94,7 +94,7 @@
                     <%
                         if (excel) {
                     %>
-                    <a href="prn_registro_excel.jsp" target="_blank">Descargar Excel <img src="../img/rsz_excel.png" alt="Excel" class="img-responsive" style="margin:0 auto;"/></a>
+                    <a href="javascript:void(0);" target="_blank" onclick="descargarExcel();">Descargar Excel <img src="../img/rsz_excel.png" alt="Excel" class="img-responsive" style="margin:0 auto;"/></a>
                         <%
                             }
                         %>

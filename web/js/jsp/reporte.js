@@ -23,12 +23,13 @@ function setAsistencia(checkbox) {
             $("#div_mensaje").addClass("alert-success");
             $("#div_mensaje").fadeIn("slow");
             if (data.asistio)
-            {   $("#td_asistio"+data.participante_id).html("<a href=\"prn_constancia_participacion.jsp?id="+data.participante_id+"\" target=\"_blank\">Descargar</a>");
-                
+            {
+                $("#td_asistio" + data.participante_id).html("<a href=\"prn_constancia_participacion.jsp?id=" + data.participante_id + "\" target=\"_blank\">Descargar</a>");
+
             }
             else
-            {   
-                $("#td_asistio"+data.participante_id).html("No disponible");
+            {
+                $("#td_asistio" + data.participante_id).html("No disponible");
             }
         }
         else
@@ -43,4 +44,11 @@ function setAsistencia(checkbox) {
 
     });
 
+}
+
+function descargarExcel()
+{
+    var search = $("input[type='search']").val();
+    //window.location.href = "prn_registro_excel.jsp?s=" + search;
+    window.open('prn_registro_excel.jsp?s=' + search,'_blank');
 }
