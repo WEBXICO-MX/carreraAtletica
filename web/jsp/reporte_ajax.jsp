@@ -23,7 +23,7 @@
             if (err.getNumeroError() != 0) {
                 resultado = "{\"resultado\":0,\"mensaje\":\"Asistencia no actualizada\"}";
             } else {
-                resultado = "{\"resultado\":1,\"mensaje\":\"Asistencia actualizada con éxito\",\"participante_id\":" + p.getId() + "}";
+                resultado = "{\"resultado\":1,\"mensaje\":\"Asistencia actualizada con éxito\",\"participante_id\":" + p.getId() + ",\"asistio\":"+p.isAsistio()+" }";
             }
         }
 

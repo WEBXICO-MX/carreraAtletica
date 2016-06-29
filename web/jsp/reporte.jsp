@@ -76,7 +76,7 @@
                                     </form>
                                 </td>
                                 <td><a href="prn_registro_pdf.jsp?id=<%= rst.getInt("id")%>" target="_blank">Descargar</a></td>
-                                <td>
+                                <td id="td_asistio<%= rst.getInt("id")%>">
                                     <% if(rst.getBoolean("asistio")){ %>
                                     <a href="prn_constancia_participacion.jsp?id=<%= rst.getInt("id")%>" target="_blank">Descargar</a>
                                     <%}else{%>

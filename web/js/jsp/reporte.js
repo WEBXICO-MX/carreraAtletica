@@ -22,6 +22,14 @@ function setAsistencia(checkbox) {
             $("#mensaje").html("<span>" + data.mensaje + "</span>");
             $("#div_mensaje").addClass("alert-success");
             $("#div_mensaje").fadeIn("slow");
+            if (data.asistio)
+            {   $("#td_asistio"+data.participante_id).html("<a href=\"prn_constancia_participacion.jsp?id="+data.participante_id+"\" target=\"_blank\">Descargar</a>");
+                
+            }
+            else
+            {   
+                $("#td_asistio"+data.participante_id).html("No disponible");
+            }
         }
         else
         {
