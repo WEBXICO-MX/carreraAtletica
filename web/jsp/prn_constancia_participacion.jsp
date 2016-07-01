@@ -27,7 +27,7 @@
     Resultados rst = UtilDB.ejecutaConsulta(sql.toString());
 
     String archivoPlantilla = "";
-    archivoPlantilla = "/plantillas/constancia.pdf";
+    archivoPlantilla = "/plantillas/constancia2.pdf";
     PdfReader reader = new PdfReader(application.getRealPath(archivoPlantilla));
     ByteArrayOutputStream buffer = new ByteArrayOutputStream();
     PdfStamper stamp = new PdfStamper(reader, buffer);

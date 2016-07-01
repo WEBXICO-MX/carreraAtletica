@@ -19,20 +19,20 @@
     String smtp_user = request.getParameter("xUser") != null ? request.getParameter("xUser") : "";
     String smtp_password = request.getParameter("xPasswd") != null ? request.getParameter("xPasswd") : "";
 
-    String asunto = "Constancia de participación en la carrera atlética XXV aniversario CGUTyP";
+    String asunto = "Constancia de participación de la carrera atlética del XXV aniversario CGUTyP";
 
     if (request.getParameter("xAccion") != null) {
         if (request.getParameter("xAccion").equals("enviarEmailConstanciaParticipacion")) {
 
-            //sql = new StringBuilder("﻿SELECT id,UPPER(nombre+' '+ap_paterno+' '+ap_materno) AS nombre_completo, email FROM participantes WHERE asistio = 1 ORDER BY id");
-            sql = new StringBuilder("SELECT 39 AS id,'JORGE JOSÉ JIMÉNEZ DEL CUETO' AS nombre_completo,'sistemas@uttab.edu.mx' AS email");
+            sql = new StringBuilder("SELECT id,UPPER(nombre+' '+ap_paterno+' '+ap_materno) AS nombre_completo, email FROM participantes WHERE asistio = 1 ORDER BY id");
+            //sql = new StringBuilder("SELECT 39 AS id,'JORGE JOSÉ JIMÉNEZ DEL CUETO' AS nombre_completo,'sistemas@uttab.edu.mx' AS email");
             //sql = new StringBuilder("SELECT 38 AS id,'Roberto Eder Weiss Juárez' AS nombre_completo,'weiss.uttab@gmail.com' AS email");
             rst = UtilDB.ejecutaConsulta(sql.toString());
 
             if (rst.recordCount() > 0) {
                 while (rst.next()) {
                     msg = new StringBuilder("<strong>").append("Estimad@: ").append(rst.getString("nombre_completo")).append("</strong><br/>");
-                    msg.append("<p>Gracias por participar en la \"Carrera atlética XXV aniversario CGUTyP\", te hacemos entrega de tu constancia de participación:</p>");
+                    msg.append("<p>Gracias por participar en la \"Carrera atlética del XXV aniversario CGUTyP\", hacemos entrega de tu constancia de participación:</p>");
                     msg.append("<p><a href=\"http://www.uttab.edu.mx/carreraAtletica/jsp/prn_constancia_participacion.jsp?id=").append(rst.getInt("id")).append("\" target=\"_blank\">Descárgala aquí</a></p><br/>");
                     msg.append("<p><strong>Atentamente</strong></p>");
                     msg.append("<p><strong>Comité organizador</strong></p><br/><br/>");
