@@ -23,16 +23,16 @@
 <%@page contentType="application/pdf" pageEncoding="UTF-8" session="false"%>
 <%
     int id = request.getParameter("id") != null ? Integer.parseInt(request.getParameter("id")) : 0;
-    String file = request.getSession().getServletContext().getRealPath("WEB-INF/participantes.txt");
+    String file = request.getSession().getServletContext().getRealPath("/WEB-INF/participantes.txt");
     String nombre_completo = "";
     String[] mtz = new String[3];
-    List<String> list = new ArrayList<>();
+    List<Object> list = new ArrayList<>();
 
     try (BufferedReader reader = Files.newBufferedReader(Paths.get(file))) {
         list = reader.lines().collect(Collectors.toList());
         
-        for (String line : list) {
-            mtz = line.split(",");
+        for (Object line : list) {
+            mtz = ((String)line).split(",");
 
             if (Integer.parseInt(mtz[0]) == id) {
                 nombre_completo = mtz[1];
